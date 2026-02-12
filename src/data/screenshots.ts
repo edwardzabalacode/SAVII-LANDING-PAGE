@@ -33,7 +33,7 @@ export const screenshots: Screenshot[] = [
   {
     id: "shared-lists",
     key: "sharedLists",
-    lightSrc: "/images/screenshots/listacompartida.png",
-    darkSrc: "/images/screenshots/listacompartida.png",
+    lightSrc: "/images/screenshots/listacompartida2.png",
+    darkSrc: "/images/screenshots/listacompartida2.png",
   },
 ];
