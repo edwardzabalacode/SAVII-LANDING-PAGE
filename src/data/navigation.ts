@@ -1,5 +1,5 @@
 export interface NavLink {
-  label: string;
+  key: string;
   href: string;
 }
 
@@ -10,16 +10,15 @@ export interface SocialLink {
 }
 
 export const navLinks: NavLink[] = [
-  { label: "Funciones", href: "#funciones" },
-  { label: "Capturas", href: "#capturas" },
-  { label: "Planes", href: "#planes" },
-  { label: "FAQ", href: "#faq" },
+  { key: "features", href: "#funciones" },
+  { key: "screenshots", href: "#capturas" },
+  { key: "faq", href: "#faq" },
 ];
 
 export const footerLinks: NavLink[] = [
-  { label: "Política de Privacidad", href: "#" },
-  { label: "Términos de Uso", href: "#" },
-  { label: "Contacto", href: "#" },
+  { key: "privacyPolicy", href: "/privacidad" },
+  { key: "termsOfUse", href: "/terminos" },
+  { key: "contact", href: "/contacto" },
 ];
 
 export const socialLinks: SocialLink[] = [

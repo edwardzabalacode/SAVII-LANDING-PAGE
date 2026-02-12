@@ -9,6 +9,7 @@ interface PhoneMockupProps {
   animate?: boolean;
   gradientFrom?: string;
   gradientTo?: string;
+  size?: "sm" | "default";
 }
 
 export function PhoneMockup({
@@ -18,12 +19,18 @@ export function PhoneMockup({
   animate = false,
   gradientFrom = "from-primary-400",
   gradientTo = "to-primary-600",
+  size = "default",
 }: PhoneMockupProps) {
+  const sizeClass =
+    size === "sm"
+      ? "w-[180px] sm:w-[200px] lg:w-[220px]"
+      : "w-[240px] sm:w-[280px] lg:w-[300px]";
+
   return (
     <div
       className={`${animate ? "animate-float" : ""} ${className}`}
     >
-      <div className="relative mx-auto w-[240px] sm:w-[280px] lg:w-[300px]">
+      <div className={`relative mx-auto ${sizeClass}`}>
         {/* Phone frame (Android style) */}
         <div className="rounded-[2rem] border-[6px] border-gray-900 bg-gray-900 shadow-2xl overflow-hidden">
           {/* Punch-hole camera */}

@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
 import { navLinks, footerLinks, socialLinks } from "@/data/navigation";
 import { Instagram, Twitter, Youtube, type LucideIcon } from "lucide-react";
@@ -9,7 +10,9 @@ const iconMap: Record<string, LucideIcon> = {
   Youtube,
 };
 
-export function Footer() {
+export async function Footer() {
+  const t = await getTranslations("Footer");
+  const tNav = await getTranslations("Navigation");
   const currentYear = new Date().getFullYear();
 
   return (
@@ -26,15 +29,14 @@ export function Footer() {
               className="h-12 w-auto mb-4"
             />
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
-              Tu asistente financiero inteligente. Controla tus gastos con la
-              voz, comparte listas y visualiza tus finanzas.
+              {t("brandDescription")}
             </p>
           </div>
 
           {/* Navigation */}
           <div>
             <h3 className="font-display font-semibold text-sm uppercase tracking-wider text-gray-400 mb-4">
-              Navegación
+              {t("navigation")}
             </h3>
             <ul className="space-y-3">
               {navLinks.map((link) => (
@@ -43,7 +45,7 @@ export function Footer() {
                     href={link.href}
                     className="text-gray-300 hover:text-white transition-colors text-sm"
                   >
-                    {link.label}
+                    {tNav(link.key)}
                   </a>
                 </li>
               ))}
@@ -53,16 +55,16 @@ export function Footer() {
           {/* Legal */}
           <div>
             <h3 className="font-display font-semibold text-sm uppercase tracking-wider text-gray-400 mb-4">
-              Legal
+              {t("legal")}
             </h3>
             <ul className="space-y-3">
               {footerLinks.map((link) => (
-                <li key={link.label}>
+                <li key={link.key}>
                   <a
                     href={link.href}
                     className="text-gray-300 hover:text-white transition-colors text-sm"
                   >
-                    {link.label}
+                    {tNav(link.key)}
                   </a>
                 </li>
               ))}
@@ -72,7 +74,7 @@ export function Footer() {
           {/* Social */}
           <div>
             <h3 className="font-display font-semibold text-sm uppercase tracking-wider text-gray-400 mb-4">
-              Síguenos
+              {t("followUs")}
             </h3>
             <div className="flex gap-4">
               {socialLinks.map((social) => {
@@ -95,7 +97,7 @@ export function Footer() {
         {/* Bottom bar */}
         <div className="mt-12 pt-8 border-t border-white/10 text-center">
           <p className="text-gray-500 text-sm">
-            &copy; {currentYear} Savii. Todos los derechos reservados.
+            &copy; {currentYear} {t("copyright")}
           </p>
         </div>
       </Container>

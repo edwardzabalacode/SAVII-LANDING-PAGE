@@ -1,48 +1,24 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
-import { Users, RefreshCw, Shield, Zap } from "lucide-react";
+import { Users, RefreshCw, Shield, Eye } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 import { SectionTitle } from "@/components/ui/SectionTitle";
+import { PhoneMockup } from "@/components/ui/PhoneMockup";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
 
-const benefits = [
-  {
-    icon: Users,
-    text: "Comparte con pareja, familia o roomies",
-  },
-  {
-    icon: RefreshCw,
-    text: "Sincronización en tiempo real",
-  },
-  {
-    icon: Shield,
-    text: "Código seguro de 6 dígitos",
-  },
-  {
-    icon: Zap,
-    text: "Únete a una lista en segundos",
-  },
-];
-
-function CodeDigit({ digit, index }: { digit: string; index: number }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1, duration: 0.4 }}
-      className="w-12 h-14 sm:w-14 sm:h-16 rounded-xl bg-white/90 backdrop-blur-sm border-2 border-primary-200 flex items-center justify-center shadow-lg shadow-primary-500/10"
-    >
-      <span className="font-display font-bold text-2xl text-primary-600">
-        {digit}
-      </span>
-    </motion.div>
-  );
-}
-
 export function SharedListsSection() {
-  const code = "A7B3K9";
+  const t = useTranslations("SharedLists");
+
+  const benefits = [
+    { icon: Shield, text: t("trust") },
+    { icon: RefreshCw, text: t("sync") },
+    { icon: Users, text: t("individual") },
+    { icon: Eye, text: t("balance") },
+  ];
 
   return (
     <section className="relative py-20 sm:py-28 bg-surface-alt overflow-hidden">
@@ -139,29 +115,30 @@ export function SharedListsSection() {
         <div className="grid md:grid-cols-2 gap-12 lg:gap-20 items-center">
           {/* Visual */}
           <AnimatedSection>
-            <div className="flex flex-col items-center">
-              {/* Illustration */}
-              <div className="w-full max-w-sm aspect-square rounded-3xl bg-gradient-to-br from-primary-100/80 to-primary-200/80 backdrop-blur-sm flex items-center justify-center mb-8 border border-white/50 shadow-lg shadow-primary-500/10">
-                <Users className="h-24 w-24 text-primary-400" />
-              </div>
-
-              {/* 6-digit code */}
-              <div className="flex gap-2">
-                {code.split("").map((digit, i) => (
-                  <CodeDigit key={i} digit={digit} index={i} />
-                ))}
-              </div>
-              <p className="text-sm text-text-muted mt-3">
-                Comparte este código para unirse
-              </p>
+            <div className="flex justify-center">
+              <PhoneMockup
+                label={t("phoneLabel")}
+                gradientFrom="from-emerald-500"
+                gradientTo="to-teal-600"
+                screenContent={
+                  <Image
+                    src="/images/screenshots/listacompartida2.png"
+                    alt={t("phoneLabel")}
+                    fill
+                    className="object-cover"
+                    quality={100}
+                    sizes="300px"
+                  />
+                }
+              />
             </div>
           </AnimatedSection>
 
           {/* Content */}
           <AnimatedSection delay={0.2}>
             <SectionTitle
-              title="Listas compartidas"
-              subtitle="Controla los gastos en equipo. Cada cambio se sincroniza automáticamente para que todos estén al día."
+              title={t("title")}
+              subtitle={t("subtitle")}
               align="left"
             />
 
