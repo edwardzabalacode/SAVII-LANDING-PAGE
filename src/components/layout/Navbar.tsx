@@ -3,15 +3,19 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Menu, Download } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { useScrollPosition } from "@/hooks/useScrollPosition";
 import { navLinks } from "@/data/navigation";
 import { Button } from "@/components/ui/Button";
 import { MobileDrawer } from "./MobileDrawer";
+import { LanguageSelector } from "@/components/ui/LanguageSelector";
 
 export function Navbar() {
   const scrollY = useScrollPosition();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const isScrolled = scrollY > 50;
+  const t = useTranslations("Navbar");
+  const tNav = useTranslations("Navigation");
 
   return (
     <>
@@ -48,16 +52,17 @@ export function Navbar() {
                   href={link.href}
                   className="text-sm font-medium text-gray-300 hover:text-white transition-colors"
                 >
-                  {link.label}
+                  {tNav(link.key)}
                 </a>
               ))}
             </nav>
 
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-4">
+              <LanguageSelector variant="dark" />
               <Button size="sm" href="#">
                 <Download className="h-4 w-4" />
-                Descargar
+                {t("download")}
               </Button>
             </div>
 
@@ -65,7 +70,7 @@ export function Navbar() {
             <button
               onClick={() => setMobileMenuOpen(true)}
               className="lg:hidden p-2 text-gray-300 hover:text-white cursor-pointer"
-              aria-label="Abrir menú"
+              aria-label={t("openMenu")}
             >
               <Menu className="h-6 w-6" />
             </button>

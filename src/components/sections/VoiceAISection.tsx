@@ -2,32 +2,12 @@
 
 import { motion } from "framer-motion";
 import { Mic, Cpu, CheckCircle } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { AbstractDarkArt } from "@/components/ui/AbstractDarkArt";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
-
-const steps = [
-  {
-    icon: Mic,
-    title: "Habla",
-    description: "Presiona el micrófono y habla naturalmente",
-    color: "bg-primary-500",
-  },
-  {
-    icon: Cpu,
-    title: "Procesa",
-    description: "Gemini AI extrae la información",
-    color: "bg-tint",
-  },
-  {
-    icon: CheckCircle,
-    title: "Listo",
-    description: "Tu gasto queda registrado al instante",
-    color: "bg-success",
-  },
-];
 
 function SoundWave() {
   return (
@@ -52,6 +32,29 @@ function SoundWave() {
 }
 
 export function VoiceAISection() {
+  const t = useTranslations("VoiceAI");
+
+  const steps = [
+    {
+      icon: Mic,
+      title: t("stepSpeak"),
+      description: t("stepSpeakDesc"),
+      color: "bg-primary-500",
+    },
+    {
+      icon: Cpu,
+      title: t("stepProcess"),
+      description: t("stepProcessDesc"),
+      color: "bg-tint",
+    },
+    {
+      icon: CheckCircle,
+      title: t("stepDone"),
+      description: t("stepDoneDesc"),
+      color: "bg-success",
+    },
+  ];
+
   return (
     <section className="relative py-20 sm:py-28 bg-surface-dark text-text-light overflow-hidden">
       {/* Abstract art background */}
@@ -63,9 +66,9 @@ export function VoiceAISection() {
       <Container className="relative z-10">
         <AnimatedSection>
           <SectionTitle
-            badge="IA de Voz"
-            title="Habla, Savii escucha"
-            subtitle="Olvídate de escribir. Solo di lo que gastaste y nuestra IA hace el resto."
+            badge={t("badge")}
+            title={t("title")}
+            subtitle={t("subtitle")}
             light
           />
         </AnimatedSection>
@@ -83,27 +86,27 @@ export function VoiceAISection() {
               <SoundWave />
             </div>
             <p className="text-lg text-gray-300 italic mb-6">
-              &quot;Gasté cincuenta dólares en el supermercado&quot;
+              &quot;{t("voiceExample")}&quot;
             </p>
 
             {/* Extracted data */}
             <div className="grid grid-cols-3 gap-4">
               <div className="bg-white/5 backdrop-blur-sm rounded-xl p-3 text-center border border-white/5">
-                <div className="text-xs text-gray-400 mb-1">Monto</div>
+                <div className="text-xs text-gray-400 mb-1">{t("amount")}</div>
                 <div className="font-display font-bold text-primary-400">
-                  $50.00
+                  {t("amountValue")}
                 </div>
               </div>
               <div className="bg-white/5 backdrop-blur-sm rounded-xl p-3 text-center border border-white/5">
-                <div className="text-xs text-gray-400 mb-1">Categoría</div>
+                <div className="text-xs text-gray-400 mb-1">{t("category")}</div>
                 <div className="font-display font-bold text-primary-400">
-                  Mercado
+                  {t("categoryValue")}
                 </div>
               </div>
               <div className="bg-white/5 backdrop-blur-sm rounded-xl p-3 text-center border border-white/5">
-                <div className="text-xs text-gray-400 mb-1">Descripción</div>
+                <div className="text-xs text-gray-400 mb-1">{t("description")}</div>
                 <div className="font-display font-bold text-primary-400 text-sm">
-                  Supermercado
+                  {t("descriptionValue")}
                 </div>
               </div>
             </div>

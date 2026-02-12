@@ -2,24 +2,29 @@ import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
 import { Mail } from "lucide-react";
+import { getTranslations } from "next-intl/server";
 
-export const metadata = {
-  title: "Contacto - Savii",
-  description: "Ponte en contacto con el equipo de Savii.",
-};
+export async function generateMetadata() {
+  const t = await getTranslations("Contact");
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+  };
+}
 
-export default function ContactoPage() {
+export default async function ContactoPage() {
+  const t = await getTranslations("Contact");
+
   return (
     <>
       <Navbar />
       <main className="pt-28 pb-20 bg-background min-h-screen">
         <Container className="max-w-3xl">
           <h1 className="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-2">
-            Contacto
+            {t("title")}
           </h1>
           <p className="text-text-muted text-sm mb-10">
-            ¿Tienes preguntas, sugerencias o necesitas ayuda? Estamos aquí para
-            ti.
+            {t("subtitle")}
           </p>
 
           <div className="space-y-8">
@@ -29,11 +34,10 @@ export default function ContactoPage() {
               </div>
               <div>
                 <h2 className="font-display font-bold text-lg text-text-primary mb-1">
-                  Correo electrónico
+                  {t("emailTitle")}
                 </h2>
                 <p className="text-text-secondary mb-3">
-                  Escríbenos para cualquier consulta, reporte de errores o
-                  sugerencia. Respondemos en un plazo de 24-48 horas.
+                  {t("emailDescription")}
                 </p>
                 <a
                   href="mailto:thecode12ai@gmail.com"
@@ -46,14 +50,14 @@ export default function ContactoPage() {
 
             <div className="p-6 rounded-2xl bg-surface border border-border">
               <h2 className="font-display font-bold text-lg text-text-primary mb-3">
-                ¿Sobre qué puedes escribirnos?
+                {t("topicsTitle")}
               </h2>
               <ul className="list-disc pl-6 space-y-2 text-text-secondary">
-                <li>Problemas técnicos o errores en la app.</li>
-                <li>Sugerencias de nuevas funciones o mejoras.</li>
-                <li>Preguntas sobre tu cuenta o tus datos.</li>
-                <li>Consultas sobre privacidad o términos de uso.</li>
-                <li>Colaboraciones o propuestas comerciales.</li>
+                <li>{t("topic1")}</li>
+                <li>{t("topic2")}</li>
+                <li>{t("topic3")}</li>
+                <li>{t("topic4")}</li>
+                <li>{t("topic5")}</li>
               </ul>
             </div>
           </div>

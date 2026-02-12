@@ -3,8 +3,10 @@
 import { useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Download } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { navLinks } from "@/data/navigation";
 import { Button } from "@/components/ui/Button";
+import { LanguageSelector } from "@/components/ui/LanguageSelector";
 
 interface MobileDrawerProps {
   isOpen: boolean;
@@ -12,6 +14,9 @@ interface MobileDrawerProps {
 }
 
 export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
+  const t = useTranslations("Navbar");
+  const tNav = useTranslations("Navigation");
+
   useEffect(() => {
     if (isOpen) {
       document.body.style.overflow = "hidden";
@@ -53,7 +58,7 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
                 <button
                   onClick={onClose}
                   className="p-2 text-text-muted hover:text-text-primary cursor-pointer"
-                  aria-label="Cerrar menú"
+                  aria-label={t("closeMenu")}
                 >
                   <X className="h-5 w-5" />
                 </button>
@@ -68,16 +73,21 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
                     onClick={onClose}
                     className="px-4 py-3 rounded-xl text-text-primary font-medium hover:bg-primary-50 hover:text-primary-600 transition-colors"
                   >
-                    {link.label}
+                    {tNav(link.key)}
                   </a>
                 ))}
               </nav>
+
+              {/* Language Selector */}
+              <div className="mt-6">
+                <LanguageSelector variant="light" />
+              </div>
 
               {/* CTA */}
               <div className="mt-auto pt-6 border-t border-border">
                 <Button href="#" className="w-full">
                   <Download className="h-4 w-4" />
-                  Descargar App
+                  {t("downloadApp")}
                 </Button>
               </div>
             </div>

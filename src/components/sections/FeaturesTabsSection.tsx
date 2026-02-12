@@ -11,6 +11,7 @@ import {
   Palette,
   type LucideIcon,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { PhoneMockup } from "@/components/ui/PhoneMockup";
@@ -79,10 +80,12 @@ function BranchLine({
 /* ── Desktop feature branch (static label + line + node) ── */
 function FeatureBranch({
   feature,
+  title,
   side,
   index,
 }: {
   feature: (typeof features)[number];
+  title: string;
   side: "left" | "right";
   index: number;
 }) {
@@ -100,7 +103,7 @@ function FeatureBranch({
       <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-primary-100 flex-shrink-0">
         <Icon className="h-5 w-5 text-primary-600" />
       </span>
-      {feature.title}
+      {title}
     </motion.div>
   );
 
@@ -126,9 +129,11 @@ function FeatureBranch({
 /* ── Mobile feature label ── */
 function MobileFeatureLabel({
   feature,
+  title,
   index,
 }: {
   feature: (typeof features)[number];
+  title: string;
   index: number;
 }) {
   const Icon = iconMap[feature.iconName] || Mic;
@@ -144,7 +149,7 @@ function MobileFeatureLabel({
       <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-primary-100 flex-shrink-0">
         <Icon className="h-5 w-5 text-primary-600" />
       </span>
-      {feature.title}
+      {title}
     </motion.div>
   );
 }
@@ -153,6 +158,7 @@ function MobileFeatureLabel({
    FEATURES TABS SECTION
    ════════════════════════════════════════════════ */
 export function FeaturesTabsSection() {
+  const t = useTranslations("Features");
   const leftFeatures = features.slice(0, 3);
   const rightFeatures = features.slice(3, 6);
 
@@ -182,9 +188,9 @@ export function FeaturesTabsSection() {
         {/* Title */}
         <AnimatedSection>
           <SectionTitle
-            badge="Funciones"
-            title="Características que te encantarán"
-            subtitle="Todo lo que necesitas para organizar tus finanzas personales en una sola app."
+            badge={t("badge")}
+            title={t("title")}
+            subtitle={t("subtitle")}
           />
         </AnimatedSection>
 
@@ -197,6 +203,7 @@ export function FeaturesTabsSection() {
                 <FeatureBranch
                   key={f.id}
                   feature={f}
+                  title={t(`${f.id}.title`)}
                   side="left"
                   index={i}
                 />
@@ -249,13 +256,13 @@ export function FeaturesTabsSection() {
               {/* Scaled-up phone */}
               <div className="lg:scale-[1.15] origin-center">
                 <PhoneMockup
-                  label="Savii App"
+                  label={t("phoneLabel")}
                   gradientFrom="from-primary-400"
                   gradientTo="to-primary-600"
                   screenContent={
                     <Image
                       src="/images/screenshots/Estadisticas.png"
-                      alt="Savii App"
+                      alt={t("phoneLabel")}
                       fill
                       className="object-cover"
                       quality={100}
@@ -272,6 +279,7 @@ export function FeaturesTabsSection() {
                 <FeatureBranch
                   key={f.id}
                   feature={f}
+                  title={t(`${f.id}.title`)}
                   side="right"
                   index={i + 3}
                 />
@@ -310,13 +318,13 @@ export function FeaturesTabsSection() {
               ))}
               <div className="absolute inset-0 bg-primary-400/10 blur-[50px] rounded-full" />
               <PhoneMockup
-                label="Savii App"
+                label={t("phoneLabel")}
                 gradientFrom="from-primary-400"
                 gradientTo="to-primary-600"
                 screenContent={
                   <Image
                     src="/images/screenshots/Estadisticas.png"
-                    alt="Savii App"
+                    alt={t("phoneLabel")}
                     fill
                     className="object-cover"
                     quality={100}
@@ -339,7 +347,7 @@ export function FeaturesTabsSection() {
                     {/* Horizontal connector */}
                     <div className="w-4 h-[3px] rounded-full bg-primary-400/30 flex-shrink-0" />
                     {/* Label */}
-                    <MobileFeatureLabel feature={f} index={i} />
+                    <MobileFeatureLabel feature={f} title={t(`${f.id}.title`)} index={i} />
                   </div>
                 ))}
               </div>

@@ -1,6 +1,7 @@
 "use client";
 
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { StoreBadge } from "@/components/ui/StoreBadge";
@@ -13,6 +14,8 @@ import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { Sparkles } from "lucide-react";
 
 export function HeroSection() {
+  const t = useTranslations("Hero");
+
   return (
     <section className="relative pt-28 sm:pt-32 pb-16 sm:pb-24 overflow-hidden">
       {/* Abstract art background */}
@@ -27,18 +30,16 @@ export function HeroSection() {
           <AnimatedSection className="text-center lg:text-left">
             <Badge className="mb-6">
               <Sparkles className="h-3.5 w-3.5" />
-              Potenciado con Inteligencia Artificial
+              {t("badge")}
             </Badge>
 
             <h1 className="font-display font-bold text-4xl sm:text-5xl lg:text-6xl xl:text-7xl leading-tight text-text-primary">
-              Controla tus gastos{" "}
-              <span className="text-gradient">con inteligencia.</span>
+              {t("title")}{" "}
+              <span className="text-gradient">{t("titleHighlight")}</span>
             </h1>
 
             <p className="mt-6 text-lg sm:text-xl text-text-secondary max-w-lg mx-auto lg:mx-0 leading-relaxed">
-              La app que escucha tu voz, organiza tus finanzas y te muestra
-              hacia dónde va tu dinero. Disponible en español, inglés y
-              portugués.
+              {t("subtitle")}
             </p>
 
             {/* Store badges */}
@@ -53,11 +54,11 @@ export function HeroSection() {
           <AnimatedSection delay={0.2} className="flex justify-center lg:mt-10">
             <PhoneMockup
               animate
-              label="Pantalla principal de Savii"
+              label={t("phoneLabel")}
               screenContent={
                 <Image
                   src="/images/screenshots/home.png"
-                  alt="Pantalla principal de Savii"
+                  alt={t("phoneLabel")}
                   fill
                   className="object-cover"
                   quality={100}

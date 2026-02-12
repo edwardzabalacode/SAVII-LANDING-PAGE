@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 import { StoreBadge } from "@/components/ui/StoreBadge";
 import { PhoneMockup } from "@/components/ui/PhoneMockup";
@@ -9,6 +10,8 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
 
 export function FinalCTASection() {
+  const t = useTranslations("FinalCTA");
+
   return (
     <section className="relative py-20 sm:py-28 bg-gradient-to-br from-primary-600 via-primary-500 to-tint overflow-hidden">
       {/* Abstract art background */}
@@ -166,11 +169,10 @@ export function FinalCTASection() {
           {/* Text */}
           <AnimatedSection className="text-center lg:text-left">
             <h2 className="font-display font-bold text-3xl sm:text-4xl lg:text-5xl text-white leading-tight">
-              Empieza a controlar tus gastos hoy
+              {t("title")}
             </h2>
             <p className="mt-4 text-lg text-white/80 max-w-lg mx-auto lg:mx-0">
-              Únete a miles de personas que ya organizan sus finanzas con Savii.
-              Es gratis.
+              {t("subtitle")}
             </p>
 
             <div className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
@@ -184,11 +186,11 @@ export function FinalCTASection() {
           <AnimatedSection delay={0.2} className="flex justify-center">
             <PhoneMockup
               animate
-              label="Descarga Savii"
+              label={t("phoneLabel")}
               screenContent={
                 <Image
                   src="/images/screenshots/splash.png"
-                  alt="Descarga Savii"
+                  alt={t("phoneLabel")}
                   fill
                   className="object-cover"
                   quality={100}

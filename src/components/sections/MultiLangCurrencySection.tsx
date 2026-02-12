@@ -1,6 +1,7 @@
 "use client";
 
 import { Globe, Coins } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
@@ -90,6 +91,8 @@ function Marquee({
 }
 
 export function MultiLangCurrencySection() {
+  const t = useTranslations("MultiLang");
+
   return (
     <section className="relative py-20 sm:py-28 bg-surface-alt overflow-hidden">
       {/* Background */}
@@ -101,9 +104,9 @@ export function MultiLangCurrencySection() {
       <Container>
         <AnimatedSection>
           <SectionTitle
-            badge="Global"
-            title="Tu idioma, tu moneda"
-            subtitle="Savii se adapta a ti, sin importar dónde estés."
+            badge={t("badge")}
+            title={t("title")}
+            subtitle={t("subtitle")}
           />
         </AnimatedSection>
 
@@ -111,7 +114,7 @@ export function MultiLangCurrencySection() {
         <AnimatedSection delay={0.1} className="mb-14">
           <div className="flex items-center justify-center gap-2 text-primary-500 mb-6">
             <Globe className="h-5 w-5" />
-            <span className="font-display font-semibold">3 Idiomas</span>
+            <span className="font-display font-semibold">{t("languages")}</span>
           </div>
           <div className="flex gap-5 justify-center">
             {languages.map((lang) => (
@@ -133,7 +136,7 @@ export function MultiLangCurrencySection() {
         <AnimatedSection delay={0.2}>
           <div className="flex items-center justify-center gap-2 text-primary-500 mb-6">
             <Coins className="h-5 w-5" />
-            <span className="font-display font-semibold">+70 Monedas</span>
+            <span className="font-display font-semibold">{t("currencies")}</span>
           </div>
 
           <div className="space-y-4">
@@ -142,7 +145,7 @@ export function MultiLangCurrencySection() {
           </div>
 
           <p className="text-center text-text-muted text-sm mt-6">
-            Y muchas más...
+            {t("andMore")}
           </p>
         </AnimatedSection>
       </Container>

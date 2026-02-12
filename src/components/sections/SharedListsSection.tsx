@@ -3,32 +3,23 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { Users, RefreshCw, Shield, Eye } from "lucide-react";
+import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { PhoneMockup } from "@/components/ui/PhoneMockup";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
 
-const benefits = [
-  {
-    icon: Shield,
-    text: "Solo personas de tu confianza",
-  },
-  {
-    icon: RefreshCw,
-    text: "Sincronización en tiempo real",
-  },
-  {
-    icon: Users,
-    text: "Cada quien registra sus gastos",
-  },
-  {
-    icon: Eye,
-    text: "Todos ven el mismo balance",
-  },
-];
-
 export function SharedListsSection() {
+  const t = useTranslations("SharedLists");
+
+  const benefits = [
+    { icon: Shield, text: t("trust") },
+    { icon: RefreshCw, text: t("sync") },
+    { icon: Users, text: t("individual") },
+    { icon: Eye, text: t("balance") },
+  ];
+
   return (
     <section className="relative py-20 sm:py-28 bg-surface-alt overflow-hidden">
       {/* Abstract background */}
@@ -126,13 +117,13 @@ export function SharedListsSection() {
           <AnimatedSection>
             <div className="flex justify-center">
               <PhoneMockup
-                label="Listas compartidas"
+                label={t("phoneLabel")}
                 gradientFrom="from-emerald-500"
                 gradientTo="to-teal-600"
                 screenContent={
                   <Image
                     src="/images/screenshots/listacompartida1.png"
-                    alt="Listas compartidas"
+                    alt={t("phoneLabel")}
                     fill
                     className="object-cover"
                     quality={100}
@@ -146,8 +137,8 @@ export function SharedListsSection() {
           {/* Content */}
           <AnimatedSection delay={0.2}>
             <SectionTitle
-              title="Finanzas en equipo"
-              subtitle="Lleva las cuentas junto a tu pareja, roomies o familia. Cada quien registra sus gastos y todos ven el mismo balance en tiempo real."
+              title={t("title")}
+              subtitle={t("subtitle")}
               align="left"
             />
 

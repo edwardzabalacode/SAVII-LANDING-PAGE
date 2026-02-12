@@ -1,139 +1,132 @@
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { Container } from "@/components/ui/Container";
+import { getTranslations } from "next-intl/server";
 
-export const metadata = {
-  title: "Política de Privacidad - Savii",
-  description: "Política de privacidad de la aplicación Savii.",
-};
+export async function generateMetadata() {
+  const t = await getTranslations("Privacy");
+  return {
+    title: t("metaTitle"),
+    description: t("metaDescription"),
+  };
+}
 
-export default function PrivacidadPage() {
+export default async function PrivacidadPage() {
+  const t = await getTranslations("Privacy");
+
   return (
     <>
       <Navbar />
       <main className="pt-28 pb-20 bg-background min-h-screen">
         <Container className="max-w-3xl">
           <h1 className="font-display font-bold text-3xl sm:text-4xl text-text-primary mb-2">
-            Política de Privacidad
+            {t("title")}
           </h1>
           <p className="text-text-muted text-sm mb-10">
-            Última actualización: febrero 2026
+            {t("lastUpdated")}
           </p>
 
           <div className="prose prose-gray max-w-none space-y-6 text-text-secondary leading-relaxed">
             <section>
               <h2 className="font-display font-bold text-xl text-text-primary mt-8 mb-3">
-                1. Información que recopilamos
+                {t("s1Title")}
               </h2>
               <p>
-                Savii recopila la información mínima necesaria para brindarte el
-                servicio. Esto incluye:
+                {t("s1Intro")}
               </p>
               <ul className="list-disc pl-6 space-y-1 mt-2">
                 <li>
-                  Datos financieros que registras (montos, categorías,
-                  descripciones de gastos).
+                  {t("s1Item1")}
                 </li>
                 <li>
-                  Audio de voz procesado temporalmente para extraer información de
-                  gastos mediante IA. El audio no se almacena.
+                  {t("s1Item2")}
                 </li>
                 <li>
-                  Preferencias de configuración (idioma, moneda, tema visual).
+                  {t("s1Item3")}
                 </li>
               </ul>
             </section>
 
             <section>
               <h2 className="font-display font-bold text-xl text-text-primary mt-8 mb-3">
-                2. Cómo usamos tu información
+                {t("s2Title")}
               </h2>
-              <p>Tu información se utiliza exclusivamente para:</p>
+              <p>{t("s2Intro")}</p>
               <ul className="list-disc pl-6 space-y-1 mt-2">
-                <li>Registrar y organizar tus gastos personales.</li>
+                <li>{t("s2Item1")}</li>
                 <li>
-                  Generar estadísticas y visualizaciones de tus finanzas.
+                  {t("s2Item2")}
                 </li>
                 <li>
-                  Sincronizar listas compartidas entre personas que tú invites.
+                  {t("s2Item3")}
                 </li>
-                <li>Mejorar la precisión del reconocimiento de voz.</li>
+                <li>{t("s2Item4")}</li>
               </ul>
             </section>
 
             <section>
               <h2 className="font-display font-bold text-xl text-text-primary mt-8 mb-3">
-                3. Almacenamiento y seguridad
+                {t("s3Title")}
               </h2>
               <p>
-                Tus datos se almacenan de forma segura en tu dispositivo. Si
-                activas el respaldo en la nube, los datos se cifran durante la
-                transferencia y el almacenamiento. No vendemos, compartimos ni
-                cedemos tu información personal a terceros.
+                {t("s3Text")}
               </p>
             </section>
 
             <section>
               <h2 className="font-display font-bold text-xl text-text-primary mt-8 mb-3">
-                4. Listas compartidas
+                {t("s4Title")}
               </h2>
               <p>
-                Cuando compartes una lista, solo las personas que tú invites
-                pueden ver los gastos de esa lista. Cada participante tiene
-                acceso únicamente a la lista compartida, no a tus demás datos
-                personales.
+                {t("s4Text")}
               </p>
             </section>
 
             <section>
               <h2 className="font-display font-bold text-xl text-text-primary mt-8 mb-3">
-                5. Servicios de terceros
+                {t("s5Title")}
               </h2>
               <p>
-                Savii utiliza Google Gemini AI para el procesamiento de voz. El
-                audio se envía de forma segura a los servidores de Google para su
-                procesamiento y no se almacena después de la transcripción.
-                Consulta la{" "}
+                {t("s5Text")}{" "}
                 <a
                   href="https://policies.google.com/privacy"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-primary-600 hover:underline"
                 >
-                  Política de Privacidad de Google
+                  {t("s5Link")}
                 </a>{" "}
-                para más detalles.
+                {t("s5TextEnd")}
               </p>
             </section>
 
             <section>
               <h2 className="font-display font-bold text-xl text-text-primary mt-8 mb-3">
-                6. Tus derechos
+                {t("s6Title")}
               </h2>
-              <p>Tienes derecho a:</p>
+              <p>{t("s6Intro")}</p>
               <ul className="list-disc pl-6 space-y-1 mt-2">
-                <li>Acceder a todos tus datos almacenados en la app.</li>
-                <li>Eliminar tu cuenta y todos los datos asociados.</li>
-                <li>Exportar tus datos en cualquier momento.</li>
+                <li>{t("s6Item1")}</li>
+                <li>{t("s6Item2")}</li>
+                <li>{t("s6Item3")}</li>
               </ul>
             </section>
 
             <section>
               <h2 className="font-display font-bold text-xl text-text-primary mt-8 mb-3">
-                7. Cambios en esta política
+                {t("s7Title")}
               </h2>
               <p>
-                Podemos actualizar esta política ocasionalmente. Te
-                notificaremos sobre cambios significativos a través de la app.
+                {t("s7Text")}
               </p>
             </section>
 
             <section>
               <h2 className="font-display font-bold text-xl text-text-primary mt-8 mb-3">
-                8. Contacto
+                {t("s8Title")}
               </h2>
               <p>
-                Si tienes preguntas sobre esta política, escríbenos a{" "}
+                {t("s8Text")}{" "}
                 <a
                   href="mailto:thecode12ai@gmail.com"
                   className="text-primary-600 hover:underline"

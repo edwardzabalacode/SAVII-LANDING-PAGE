@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import Image from "next/image";
+import { useTranslations } from "next-intl";
 import { Container } from "@/components/ui/Container";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Toggle } from "@/components/ui/Toggle";
@@ -33,6 +34,7 @@ const lightGradients = [
 ];
 
 export function ScreenshotsSection() {
+  const t = useTranslations("Screenshots");
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   return (
@@ -46,15 +48,15 @@ export function ScreenshotsSection() {
       <Container>
         <AnimatedSection>
           <SectionTitle
-            badge="Capturas"
-            title="Conoce Savii por dentro"
-            subtitle="Explora la interfaz diseñada para hacer tu vida financiera más simple."
+            badge={t("badge")}
+            title={t("title")}
+            subtitle={t("subtitle")}
           />
         </AnimatedSection>
 
         <AnimatedSection delay={0.1} className="flex justify-center mb-10">
           <Toggle
-            options={["Modo Claro", "Modo Oscuro"]}
+            options={[t("lightMode"), t("darkMode")]}
             value={isDarkMode}
             onChange={setIsDarkMode}
           />
@@ -65,10 +67,11 @@ export function ScreenshotsSection() {
             {screenshots.map((screenshot, index) => (
               <div
                 key={screenshot.id}
-                className="flex-none w-[200px] sm:w-[240px]"
+                className="flex-none w-[200px] sm:w-[220px] lg:w-[240px]"
               >
                 <PhoneMockup
-                  label={screenshot.label}
+                  size="sm"
+                  label={t(screenshot.key)}
                   gradientFrom={
                     isDarkMode
                       ? darkGradients[index % darkGradients.length].from
@@ -79,11 +82,10 @@ export function ScreenshotsSection() {
                       ? darkGradients[index % darkGradients.length].to
                       : lightGradients[index % lightGradients.length].to
                   }
-                  className="scale-90"
                   screenContent={
                     <Image
                       src={isDarkMode ? screenshot.darkSrc : screenshot.lightSrc}
-                      alt={screenshot.label}
+                      alt={t(screenshot.key)}
                       fill
                       className="object-cover"
                       quality={100}

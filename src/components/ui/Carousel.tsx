@@ -38,7 +38,7 @@ export function Carousel({
   return (
     <div className={className}>
       <div className="overflow-hidden" ref={emblaRef}>
-        <div className="flex gap-4">{children}</div>
+        <div className="flex gap-10">{children}</div>
       </div>
 
       {showDots && scrollSnaps.length > 1 && (
