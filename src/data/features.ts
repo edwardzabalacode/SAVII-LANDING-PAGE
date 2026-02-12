@@ -25,7 +25,7 @@ export const features: Feature[] = [
     iconName: "BarChart3",
     title: "Visualiza tu dinero",
     description:
-      "Gráficos claros que muestran exactamente hacia dónde va cada peso. Analiza tus hábitos y toma mejores decisiones financieras.",
+      "Gráficos claros que muestran exactamente hacia dónde va tu dinero. Analiza tus hábitos y toma mejores decisiones financieras.",
     bullets: [
       "Gráficos por categoría",
       "Análisis por período",

@@ -50,7 +50,7 @@ export function HeroSection() {
           </AnimatedSection>
 
           {/* Phone mockup */}
-          <AnimatedSection delay={0.2} className="flex justify-center">
+          <AnimatedSection delay={0.2} className="flex justify-center lg:mt-10">
             <PhoneMockup
               animate
               label="Pantalla principal de Savii"

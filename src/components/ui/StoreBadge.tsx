@@ -30,9 +30,9 @@ export function StoreBadge({ store, href = "#" }: StoreBadgeProps) {
       <Image
         src={config.src}
         alt={config.alt}
-        width={135}
-        height={40}
-        className="h-10 w-auto"
+        width={180}
+        height={54}
+        className="h-[54px] w-auto"
       />
     </a>
   );

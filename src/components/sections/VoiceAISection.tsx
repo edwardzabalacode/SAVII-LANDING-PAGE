@@ -83,7 +83,7 @@ export function VoiceAISection() {
               <SoundWave />
             </div>
             <p className="text-lg text-gray-300 italic mb-6">
-              &quot;Gasté cincuenta mil pesos en el supermercado&quot;
+              &quot;Gasté cincuenta dólares en el supermercado&quot;
             </p>
 
             {/* Extracted data */}
@@ -91,7 +91,7 @@ export function VoiceAISection() {
               <div className="bg-white/5 backdrop-blur-sm rounded-xl p-3 text-center border border-white/5">
                 <div className="text-xs text-gray-400 mb-1">Monto</div>
                 <div className="font-display font-bold text-primary-400">
-                  $50,000
+                  $50.00
                 </div>
               </div>
               <div className="bg-white/5 backdrop-blur-sm rounded-xl p-3 text-center border border-white/5">
