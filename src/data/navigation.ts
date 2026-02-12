@@ -12,14 +12,13 @@ export interface SocialLink {
 export const navLinks: NavLink[] = [
   { label: "Funciones", href: "#funciones" },
   { label: "Capturas", href: "#capturas" },
-  { label: "Planes", href: "#planes" },
   { label: "FAQ", href: "#faq" },
 ];
 
 export const footerLinks: NavLink[] = [
-  { label: "Política de Privacidad", href: "#" },
-  { label: "Términos de Uso", href: "#" },
-  { label: "Contacto", href: "#" },
+  { label: "Política de Privacidad", href: "/privacidad" },
+  { label: "Términos de Uso", href: "/terminos" },
+  { label: "Contacto", href: "/contacto" },
 ];
 
 export const socialLinks: SocialLink[] = [

@@ -1,53 +1,185 @@
 "use client";
 
-import { useState } from "react";
 import Image from "next/image";
-import { AnimatePresence, motion } from "framer-motion";
-import { Check } from "lucide-react";
+import { motion } from "framer-motion";
+import {
+  Mic,
+  BarChart3,
+  Share2,
+  Globe,
+  Tag,
+  Palette,
+  type LucideIcon,
+} from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionTitle } from "@/components/ui/SectionTitle";
-import { TabGroup } from "@/components/ui/TabGroup";
 import { PhoneMockup } from "@/components/ui/PhoneMockup";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { FinanceIllustration } from "@/components/ui/FinanceIllustration";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { features } from "@/data/features";
 
-const featureScreenshots: Record<string, string> = {
-  voice: "/images/screenshots/grabadordevoz.png",
+const iconMap: Record<string, LucideIcon> = {
+  Mic,
+  BarChart3,
+  Share2,
+  Globe,
+  Tag,
+  Palette,
 };
 
-const gradientPairs = [
-  { from: "from-violet-500", to: "to-purple-700" },
-  { from: "from-blue-500", to: "to-cyan-600" },
-  { from: "from-emerald-500", to: "to-teal-600" },
-  { from: "from-amber-500", to: "to-orange-600" },
-  { from: "from-rose-500", to: "to-pink-600" },
-  { from: "from-indigo-500", to: "to-blue-700" },
+const techRings = [
+  { size: 360, opacity: 0.12, duration: 8 },
+  { size: 500, opacity: 0.07, duration: 12 },
+  { size: 640, opacity: 0.04, duration: 16 },
 ];
 
-export function FeaturesTabsSection() {
-  const [activeTab, setActiveTab] = useState(features[0].id);
-  const activeFeature = features.find((f) => f.id === activeTab) || features[0];
-  const activeIndex = features.findIndex((f) => f.id === activeTab);
+/* ── Glowing connection node ── */
+function BranchNode({ delay = 0 }: { delay?: number }) {
+  return (
+    <motion.div
+      initial={{ scale: 0 }}
+      animate={{ scale: 1 }}
+      transition={{ delay, duration: 0.3, type: "spring" }}
+      className="relative flex-shrink-0"
+    >
+      <div className="w-4 h-4 rounded-full bg-primary-500 shadow-[0_0_16px_rgba(139,92,246,0.6)]" />
+      <motion.div
+        className="absolute inset-0 rounded-full bg-primary-400"
+        animate={{ scale: [1, 2.8], opacity: [0.35, 0] }}
+        transition={{ duration: 2.5, repeat: Infinity, delay: delay + 0.5 }}
+      />
+    </motion.div>
+  );
+}
+
+/* ── Gradient connector line ── */
+function BranchLine({
+  side,
+  delay = 0,
+}: {
+  side: "left" | "right";
+  delay?: number;
+}) {
+  return (
+    <motion.div
+      initial={{ scaleX: 0 }}
+      animate={{ scaleX: 1 }}
+      transition={{ delay, duration: 0.5, ease: "easeOut" }}
+      style={{ transformOrigin: side === "left" ? "right" : "left" }}
+      className={`flex-1 h-[3px] min-w-[24px] rounded-full ${
+        side === "left"
+          ? "bg-gradient-to-r from-primary-200/20 to-primary-500"
+          : "bg-gradient-to-l from-primary-200/20 to-primary-500"
+      }`}
+    />
+  );
+}
+
+/* ── Desktop feature branch (static label + line + node) ── */
+function FeatureBranch({
+  feature,
+  side,
+  index,
+}: {
+  feature: (typeof features)[number];
+  side: "left" | "right";
+  index: number;
+}) {
+  const delay = 0.15 + index * 0.1;
+  const Icon = iconMap[feature.iconName] || Mic;
+
+  const label = (
+    <motion.div
+      initial={{ opacity: 0, x: side === "left" ? -20 : 20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay, duration: 0.4 }}
+      className="flex items-center gap-3 px-5 py-3.5 rounded-2xl text-base font-semibold
+        bg-white/90 backdrop-blur-sm text-text-primary border border-white/60 shadow-md whitespace-nowrap"
+    >
+      <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-primary-100 flex-shrink-0">
+        <Icon className="h-5 w-5 text-primary-600" />
+      </span>
+      {feature.title}
+    </motion.div>
+  );
+
+  if (side === "left") {
+    return (
+      <div className="flex items-center">
+        <div className="flex-1 flex justify-end">{label}</div>
+        <BranchLine side="left" delay={delay} />
+        <BranchNode delay={delay + 0.3} />
+      </div>
+    );
+  }
 
   return (
-    <section id="funciones" className="relative py-20 sm:py-28 bg-surface-alt overflow-hidden">
-      {/* === Large abstract illustration — dominant background element === */}
+    <div className="flex items-center">
+      <BranchNode delay={delay + 0.3} />
+      <BranchLine side="right" delay={delay} />
+      <div className="flex-1">{label}</div>
+    </div>
+  );
+}
+
+/* ── Mobile feature label ── */
+function MobileFeatureLabel({
+  feature,
+  index,
+}: {
+  feature: (typeof features)[number];
+  index: number;
+}) {
+  const Icon = iconMap[feature.iconName] || Mic;
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, x: 10 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ delay: 0.1 + index * 0.06, duration: 0.3 }}
+      className="flex-1 flex items-center gap-3 px-5 py-3.5 rounded-2xl text-base font-semibold
+        bg-white/90 backdrop-blur-sm text-text-primary border border-white/60 shadow-sm"
+    >
+      <span className="flex items-center justify-center w-9 h-9 rounded-xl bg-primary-100 flex-shrink-0">
+        <Icon className="h-5 w-5 text-primary-600" />
+      </span>
+      {feature.title}
+    </motion.div>
+  );
+}
+
+/* ════════════════════════════════════════════════
+   FEATURES TABS SECTION
+   ════════════════════════════════════════════════ */
+export function FeaturesTabsSection() {
+  const leftFeatures = features.slice(0, 3);
+  const rightFeatures = features.slice(3, 6);
+
+  return (
+    <section
+      id="funciones"
+      className="relative py-20 sm:py-28 bg-background overflow-hidden"
+    >
+      {/* ── FinanceIllustration background ── */}
       <div className="absolute inset-0 flex items-center justify-center">
         <FinanceIllustration className="w-full max-w-6xl opacity-80" />
       </div>
 
-      {/* Extra gradient blobs for depth */}
-      <div className="absolute inset-0">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full bg-primary-200/20 blur-[150px]" />
-        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-tint/8 blur-[120px]" />
-      </div>
+      {/* Tech dot-grid overlay */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage:
+            "radial-gradient(circle, rgba(139,92,246,0.04) 1.2px, transparent 1.2px)",
+          backgroundSize: "32px 32px",
+        }}
+      />
 
-      {/* Grain overlay for texture */}
       <GrainOverlay opacity={0.03} />
 
       <Container className="relative z-10">
+        {/* Title */}
         <AnimatedSection>
           <SectionTitle
             badge="Funciones"
@@ -56,68 +188,162 @@ export function FeaturesTabsSection() {
           />
         </AnimatedSection>
 
+        {/* ═══ HUB LAYOUT — Desktop (lg+) ═══ */}
         <AnimatedSection delay={0.1}>
-          <TabGroup
-            tabs={features}
-            activeTab={activeTab}
-            onTabChange={setActiveTab}
-          />
-        </AnimatedSection>
+          <div className="hidden lg:grid grid-cols-[1fr_auto_1fr] gap-x-4 mt-14">
+            {/* Left branches */}
+            <div className="flex flex-col justify-evenly py-8">
+              {leftFeatures.map((f, i) => (
+                <FeatureBranch
+                  key={f.id}
+                  feature={f}
+                  side="left"
+                  index={i}
+                />
+              ))}
+            </div>
 
-        <AnimatedSection delay={0.2} className="mt-12">
-          <div className="grid md:grid-cols-2 gap-8 lg:gap-16 items-center">
-            {/* Mockup */}
-            <div className="flex justify-center order-1 md:order-none">
-              <PhoneMockup
-                label={activeFeature.title}
-                gradientFrom={gradientPairs[activeIndex]?.from || "from-primary-400"}
-                gradientTo={gradientPairs[activeIndex]?.to || "to-primary-600"}
-                screenContent={
-                  featureScreenshots[activeFeature.id] ? (
+            {/* Phone hub with tech rings */}
+            <div className="relative flex items-center justify-center px-6">
+              {/* Concentric tech rings */}
+              {techRings.map((ring, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute rounded-full border border-primary-400"
+                  style={{
+                    width: ring.size,
+                    height: ring.size,
+                    top: "50%",
+                    left: "50%",
+                    x: "-50%",
+                    y: "-50%",
+                    opacity: ring.opacity,
+                  }}
+                  animate={{
+                    scale: [1, 1.04, 1],
+                    opacity: [ring.opacity, ring.opacity * 0.5, ring.opacity],
+                  }}
+                  transition={{
+                    duration: ring.duration,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              ))}
+
+              {/* Dashed ring */}
+              <div
+                className="absolute rounded-full border border-dashed border-primary-300/8"
+                style={{
+                  width: 430,
+                  height: 430,
+                  top: "50%",
+                  left: "50%",
+                  transform: "translate(-50%, -50%)",
+                }}
+              />
+
+              {/* Glow behind phone */}
+              <div className="absolute inset-0 bg-primary-400/10 blur-[80px] rounded-full" />
+
+              {/* Scaled-up phone */}
+              <div className="lg:scale-[1.15] origin-center">
+                <PhoneMockup
+                  label="Savii App"
+                  gradientFrom="from-primary-400"
+                  gradientTo="to-primary-600"
+                  screenContent={
                     <Image
-                      src={featureScreenshots[activeFeature.id]}
-                      alt={activeFeature.title}
+                      src="/images/screenshots/Estadisticas.png"
+                      alt="Savii App"
                       fill
                       className="object-cover"
                       quality={100}
-                      sizes="300px"
+                      sizes="350px"
                     />
-                  ) : undefined
+                  }
+                />
+              </div>
+            </div>
+
+            {/* Right branches */}
+            <div className="flex flex-col justify-evenly py-8">
+              {rightFeatures.map((f, i) => (
+                <FeatureBranch
+                  key={f.id}
+                  feature={f}
+                  side="right"
+                  index={i + 3}
+                />
+              ))}
+            </div>
+          </div>
+
+          {/* ═══ MOBILE / TABLET (< lg) ═══ */}
+          <div className="lg:hidden flex flex-col items-center mt-10">
+            {/* Phone */}
+            <div className="relative mb-8">
+              {/* Mobile tech rings */}
+              {[260, 360].map((size, i) => (
+                <motion.div
+                  key={i}
+                  className="absolute rounded-full border border-primary-400"
+                  style={{
+                    width: size,
+                    height: size,
+                    top: "50%",
+                    left: "50%",
+                    x: "-50%",
+                    y: "-50%",
+                    opacity: 0.08 - i * 0.03,
+                  }}
+                  animate={{
+                    scale: [1, 1.05, 1],
+                    opacity: [0.08 - i * 0.03, 0.03, 0.08 - i * 0.03],
+                  }}
+                  transition={{
+                    duration: 8 + i * 4,
+                    repeat: Infinity,
+                    ease: "easeInOut",
+                  }}
+                />
+              ))}
+              <div className="absolute inset-0 bg-primary-400/10 blur-[50px] rounded-full" />
+              <PhoneMockup
+                label="Savii App"
+                gradientFrom="from-primary-400"
+                gradientTo="to-primary-600"
+                screenContent={
+                  <Image
+                    src="/images/screenshots/Estadisticas.png"
+                    alt="Savii App"
+                    fill
+                    className="object-cover"
+                    quality={100}
+                    sizes="280px"
+                  />
                 }
               />
             </div>
 
-            {/* Content */}
-            <AnimatePresence mode="wait">
-              <motion.div
-                key={activeFeature.id}
-                initial={{ opacity: 0, x: 20 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -20 }}
-                transition={{ duration: 0.3 }}
-                className="bg-white/80 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/60 shadow-lg shadow-primary-500/5"
-              >
-                <h3 className="font-display font-bold text-2xl sm:text-3xl text-text-primary mb-4">
-                  {activeFeature.title}
-                </h3>
-                <p className="text-text-secondary text-lg leading-relaxed mb-6">
-                  {activeFeature.description}
-                </p>
-                <ul className="space-y-3">
-                  {activeFeature.bullets.map((bullet) => (
-                    <li
-                      key={bullet}
-                      className="flex items-center gap-3 text-text-primary"
-                    >
-                      <span className="flex items-center justify-center w-5 h-5 rounded-full bg-primary-100">
-                        <Check className="h-3 w-3 text-primary-600" />
-                      </span>
-                      {bullet}
-                    </li>
-                  ))}
-                </ul>
-              </motion.div>
-            </AnimatePresence>
+            {/* Vertical branch tree */}
+            <div className="relative w-full max-w-sm">
+              <div className="absolute left-[22px] top-0 bottom-0 w-[3px] rounded-full bg-gradient-to-b from-primary-400/50 to-primary-200/5" />
+              <div className="space-y-3">
+                {features.map((f, i) => (
+                  <div key={f.id} className="relative flex items-center">
+                    {/* Node */}
+                    <div className="relative z-10 flex-shrink-0 w-[46px] flex justify-center">
+                      <div className="w-3.5 h-3.5 rounded-full bg-primary-500 shadow-[0_0_10px_rgba(139,92,246,0.5)]" />
+                    </div>
+                    {/* Horizontal connector */}
+                    <div className="w-4 h-[3px] rounded-full bg-primary-400/30 flex-shrink-0" />
+                    {/* Label */}
+                    <MobileFeatureLabel feature={f} index={i} />
+                  </div>
+                ))}
+              </div>
+            </div>
           </div>
         </AnimatedSection>
       </Container>

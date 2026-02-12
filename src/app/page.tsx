@@ -5,7 +5,7 @@ import { FeaturesTabsSection } from "@/components/sections/FeaturesTabsSection";
 import { VoiceAISection } from "@/components/sections/VoiceAISection";
 import { ScreenshotsSection } from "@/components/sections/ScreenshotsSection";
 import { SharedListsSection } from "@/components/sections/SharedListsSection";
-import { PremiumPlansSection } from "@/components/sections/PremiumPlansSection";
+// import { PremiumPlansSection } from "@/components/sections/PremiumPlansSection";
 import { MultiLangCurrencySection } from "@/components/sections/MultiLangCurrencySection";
 import { FAQSection } from "@/components/sections/FAQSection";
 import { FinalCTASection } from "@/components/sections/FinalCTASection";
@@ -20,7 +20,7 @@ export default function Home() {
         <VoiceAISection />
         <ScreenshotsSection />
         <SharedListsSection />
-        <PremiumPlansSection />
+        {/* <PremiumPlansSection /> */}
         <MultiLangCurrencySection />
         <FAQSection />
         <FinalCTASection />

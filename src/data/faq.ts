@@ -17,12 +17,12 @@ export const faqItems: FAQItem[] = [
   {
     question: "¿Puedo compartir mis gastos con mi pareja?",
     answer:
-      "¡Sí! Crea una lista compartida y comparte el código de 6 dígitos. Cualquier cambio se sincroniza en tiempo real.",
+      "¡Sí! Crea una lista compartida e invita a tu pareja o roomie. Cada quien registra sus gastos y todo se sincroniza en tiempo real.",
   },
   {
     question: "¿Mis datos están seguros?",
     answer:
-      "Absolutamente. Tus datos se almacenan de forma segura y con el plan Premium puedes hacer respaldo en la nube.",
+      "Absolutamente. Tus datos se almacenan de forma segura en tu dispositivo y también puedes hacer respaldo en la nube.",
   },
   {
     question: "¿En qué idiomas está disponible?",

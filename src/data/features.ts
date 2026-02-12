@@ -38,12 +38,12 @@ export const features: Feature[] = [
     iconName: "Share2",
     title: "Finanzas en equipo",
     description:
-      "Comparte listas con tu pareja, roomies o familia. Cualquier cambio se sincroniza en tiempo real para que todos estén al día.",
+      "Lleva las cuentas junto a tu pareja, roomies o familia. Cada quien registra sus gastos y todos ven el mismo balance en tiempo real.",
     bullets: [
-      "Código de 6 dígitos para unirse",
+      "Solo personas de tu confianza",
       "Sincronización en tiempo real",
-      "Múltiples listas compartidas",
-      "Fácil de invitar",
+      "Cada quien registra sus gastos",
+      "Todos ven el mismo balance",
     ],
   },
   {
