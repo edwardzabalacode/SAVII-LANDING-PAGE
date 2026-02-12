@@ -1,15 +1,16 @@
 import Image from "next/image";
 
 interface StoreBadgeProps {
-  store: "apple" | "google";
+  store: /* "apple" | */ "google";
   href?: string;
 }
 
 const storeConfig = {
-  apple: {
-    src: "/images/icons/app-store.svg",
-    alt: "Descargar en App Store",
-  },
+  // TODO: Descomentar cuando la app esté disponible en iOS
+  // apple: {
+  //   src: "/images/icons/app-store.svg",
+  //   alt: "Descargar en App Store",
+  // },
   google: {
     src: "/images/icons/play-store.svg",
     alt: "Disponible en Google Play",

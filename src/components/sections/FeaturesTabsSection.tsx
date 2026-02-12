@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { AnimatePresence, motion } from "framer-motion";
 import { Check } from "lucide-react";
 import { Container } from "@/components/ui/Container";
@@ -11,6 +12,10 @@ import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { FinanceIllustration } from "@/components/ui/FinanceIllustration";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { features } from "@/data/features";
+
+const featureScreenshots: Record<string, string> = {
+  voice: "/images/screenshots/grabadordevoz.png",
+};
 
 const gradientPairs = [
   { from: "from-violet-500", to: "to-purple-700" },
@@ -67,6 +72,18 @@ export function FeaturesTabsSection() {
                 label={activeFeature.title}
                 gradientFrom={gradientPairs[activeIndex]?.from || "from-primary-400"}
                 gradientTo={gradientPairs[activeIndex]?.to || "to-primary-600"}
+                screenContent={
+                  featureScreenshots[activeFeature.id] ? (
+                    <Image
+                      src={featureScreenshots[activeFeature.id]}
+                      alt={activeFeature.title}
+                      fill
+                      className="object-cover"
+                      quality={100}
+                      sizes="300px"
+                    />
+                  ) : undefined
+                }
               />
             </div>
 

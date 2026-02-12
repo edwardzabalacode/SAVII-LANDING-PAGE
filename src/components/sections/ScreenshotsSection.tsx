@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { Toggle } from "@/components/ui/Toggle";
@@ -79,6 +80,16 @@ export function ScreenshotsSection() {
                       : lightGradients[index % lightGradients.length].to
                   }
                   className="scale-90"
+                  screenContent={
+                    <Image
+                      src={isDarkMode ? screenshot.darkSrc : screenshot.lightSrc}
+                      alt={screenshot.label}
+                      fill
+                      className="object-cover"
+                      quality={100}
+                      sizes="240px"
+                    />
+                  }
                 />
               </div>
             ))}

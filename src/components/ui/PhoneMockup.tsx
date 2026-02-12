@@ -24,13 +24,13 @@ export function PhoneMockup({
       className={`${animate ? "animate-float" : ""} ${className}`}
     >
       <div className="relative mx-auto w-[240px] sm:w-[280px] lg:w-[300px]">
-        {/* Phone frame */}
-        <div className="rounded-[2.5rem] border-[8px] border-gray-900 bg-gray-900 shadow-2xl overflow-hidden">
-          {/* Notch */}
-          <div className="absolute top-[8px] left-1/2 -translate-x-1/2 w-[80px] h-[24px] bg-gray-900 rounded-b-2xl z-10" />
+        {/* Phone frame (Android style) */}
+        <div className="rounded-[2rem] border-[6px] border-gray-900 bg-gray-900 shadow-2xl overflow-hidden">
+          {/* Punch-hole camera */}
+          <div className="absolute top-[14px] left-1/2 -translate-x-1/2 w-[10px] h-[10px] bg-gray-800 rounded-full z-10 ring-1 ring-gray-700" />
 
           {/* Screen */}
-          <div className="aspect-[9/19.5] rounded-[2rem] overflow-hidden bg-white">
+          <div className="aspect-[9/19.5] rounded-[1.5rem] overflow-hidden bg-white">
             <AnimatePresence mode="wait">
               <motion.div
                 key={label}
@@ -38,7 +38,7 @@ export function PhoneMockup({
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.3 }}
-                className="w-full h-full"
+                className="relative w-full h-full"
               >
                 {screenContent || (
                   <div
@@ -53,9 +53,6 @@ export function PhoneMockup({
             </AnimatePresence>
           </div>
         </div>
-
-        {/* Bottom indicator */}
-        <div className="absolute bottom-[12px] left-1/2 -translate-x-1/2 w-[100px] h-[4px] bg-gray-600 rounded-full z-10" />
       </div>
     </div>
   );

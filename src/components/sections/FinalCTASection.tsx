@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { motion } from "framer-motion";
 import { Container } from "@/components/ui/Container";
 import { StoreBadge } from "@/components/ui/StoreBadge";
@@ -174,7 +175,8 @@ export function FinalCTASection() {
 
             <div className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
               <StoreBadge store="google" />
-              <StoreBadge store="apple" />
+              {/* TODO: Descomentar cuando la app esté disponible en iOS */}
+              {/* <StoreBadge store="apple" /> */}
             </div>
           </AnimatedSection>
 
@@ -183,8 +185,16 @@ export function FinalCTASection() {
             <PhoneMockup
               animate
               label="Descarga Savii"
-              gradientFrom="from-white/20"
-              gradientTo="to-white/5"
+              screenContent={
+                <Image
+                  src="/images/screenshots/splash.png"
+                  alt="Descarga Savii"
+                  fill
+                  className="object-cover"
+                  quality={100}
+                  sizes="300px"
+                />
+              }
             />
           </AnimatedSection>
         </div>

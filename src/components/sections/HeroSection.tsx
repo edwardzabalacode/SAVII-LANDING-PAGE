@@ -1,14 +1,15 @@
 "use client";
 
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Badge } from "@/components/ui/Badge";
 import { StoreBadge } from "@/components/ui/StoreBadge";
-import { StatCard } from "@/components/ui/StatCard";
+// import { StatCard } from "@/components/ui/StatCard";
 import { PhoneMockup } from "@/components/ui/PhoneMockup";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
 import { AbstractHeroArt } from "@/components/ui/AbstractHeroArt";
 import { GrainOverlay } from "@/components/ui/GrainOverlay";
-import { stats } from "@/data/stats";
+// import { stats } from "@/data/stats";
 import { Sparkles } from "lucide-react";
 
 export function HeroSection() {
@@ -43,7 +44,8 @@ export function HeroSection() {
             {/* Store badges */}
             <div className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
               <StoreBadge store="google" />
-              <StoreBadge store="apple" />
+              {/* TODO: Descomentar cuando la app esté disponible en iOS */}
+              {/* <StoreBadge store="apple" /> */}
             </div>
           </AnimatedSection>
 
@@ -52,14 +54,22 @@ export function HeroSection() {
             <PhoneMockup
               animate
               label="Pantalla principal de Savii"
-              gradientFrom="from-primary-500"
-              gradientTo="to-tint"
+              screenContent={
+                <Image
+                  src="/images/screenshots/home.png"
+                  alt="Pantalla principal de Savii"
+                  fill
+                  className="object-cover"
+                  quality={100}
+                  sizes="300px"
+                />
+              }
             />
           </AnimatedSection>
         </div>
 
-        {/* Stats row */}
-        <AnimatedSection delay={0.4} className="mt-16 sm:mt-20">
+        {/* TODO: Descomentar cuando haya datos reales de la app */}
+        {/* <AnimatedSection delay={0.4} className="mt-16 sm:mt-20">
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg shadow-primary-500/10 p-4 border border-white/50">
             {stats.map((stat) => (
               <StatCard
@@ -71,7 +81,7 @@ export function HeroSection() {
               />
             ))}
           </div>
-        </AnimatedSection>
+        </AnimatedSection> */}
       </Container>
     </section>
   );
