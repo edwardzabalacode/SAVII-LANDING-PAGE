@@ -15,6 +15,10 @@ const dmSans = DM_Sans({
 });
 
 export const metadata: Metadata = {
+  icons: {
+    icon: "/favicon.png",
+    apple: "/favicon.png",
+  },
   title: "Savii - Control de Gastos con IA | App Gratis",
   description:
     "Registra tus gastos con la voz, comparte listas en tiempo real y visualiza tus finanzas. Disponible en español, inglés y portugués. Descarga gratis.",
