@@ -6,17 +6,19 @@ import { StoreBadge } from "@/components/ui/StoreBadge";
 import { StatCard } from "@/components/ui/StatCard";
 import { PhoneMockup } from "@/components/ui/PhoneMockup";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
+import { AbstractHeroArt } from "@/components/ui/AbstractHeroArt";
+import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { stats } from "@/data/stats";
 import { Sparkles } from "lucide-react";
 
 export function HeroSection() {
   return (
     <section className="relative pt-28 sm:pt-32 pb-16 sm:pb-24 overflow-hidden">
-      {/* Background decoration */}
-      <div className="absolute inset-0 -z-10">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[800px] h-[800px] rounded-full bg-primary-100/40 blur-3xl" />
-        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-primary-200/20 blur-3xl" />
-      </div>
+      {/* Abstract art background */}
+      <AbstractHeroArt />
+
+      {/* Grain texture */}
+      <GrainOverlay opacity={0.03} />
 
       <Container>
         <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
@@ -58,7 +60,7 @@ export function HeroSection() {
 
         {/* Stats row */}
         <AnimatedSection delay={0.4} className="mt-16 sm:mt-20">
-          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto bg-white rounded-2xl shadow-lg shadow-primary-500/5 p-4">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl mx-auto bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg shadow-primary-500/10 p-4 border border-white/50">
             {stats.map((stat) => (
               <StatCard
                 key={stat.label}

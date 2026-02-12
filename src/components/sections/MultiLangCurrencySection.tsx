@@ -18,7 +18,13 @@ const currencies = [
 
 export function MultiLangCurrencySection() {
   return (
-    <section className="py-20 sm:py-28 bg-surface-alt">
+    <section className="relative py-20 sm:py-28 bg-surface-alt overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-10 right-1/4 w-[500px] h-[500px] rounded-full bg-primary-200/25 blur-[120px]" />
+        <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] rounded-full bg-tint/10 blur-[100px]" />
+      </div>
+
       <Container>
         <AnimatedSection>
           <SectionTitle
@@ -40,7 +46,7 @@ export function MultiLangCurrencySection() {
                 {languages.map((lang) => (
                   <div
                     key={lang.code}
-                    className="bg-white rounded-2xl p-5 shadow-sm border border-border text-center w-28"
+                    className="bg-white/80 backdrop-blur-sm rounded-2xl p-5 shadow-lg shadow-primary-500/5 border border-white/50 text-center w-28"
                   >
                     <div className="text-4xl mb-2">{lang.flag}</div>
                     <div className="font-display font-bold text-text-primary text-sm">
@@ -64,7 +70,7 @@ export function MultiLangCurrencySection() {
                 {currencies.map((symbol) => (
                   <div
                     key={symbol}
-                    className="bg-white rounded-xl p-3 shadow-sm border border-border text-center"
+                    className="bg-white/80 backdrop-blur-sm rounded-xl p-3 shadow-sm border border-white/50 text-center"
                   >
                     <span className="font-display font-bold text-lg text-primary-600">
                       {symbol}

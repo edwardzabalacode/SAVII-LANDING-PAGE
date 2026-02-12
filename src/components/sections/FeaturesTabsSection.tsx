@@ -8,6 +8,8 @@ import { SectionTitle } from "@/components/ui/SectionTitle";
 import { TabGroup } from "@/components/ui/TabGroup";
 import { PhoneMockup } from "@/components/ui/PhoneMockup";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
+import { FinanceIllustration } from "@/components/ui/FinanceIllustration";
+import { GrainOverlay } from "@/components/ui/GrainOverlay";
 import { features } from "@/data/features";
 
 const gradientPairs = [
@@ -25,8 +27,22 @@ export function FeaturesTabsSection() {
   const activeIndex = features.findIndex((f) => f.id === activeTab);
 
   return (
-    <section id="funciones" className="py-20 sm:py-28 bg-surface-alt">
-      <Container>
+    <section id="funciones" className="relative py-20 sm:py-28 bg-surface-alt overflow-hidden">
+      {/* === Large abstract illustration — dominant background element === */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <FinanceIllustration className="w-full max-w-6xl opacity-80" />
+      </div>
+
+      {/* Extra gradient blobs for depth */}
+      <div className="absolute inset-0">
+        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] rounded-full bg-primary-200/20 blur-[150px]" />
+        <div className="absolute bottom-0 right-0 w-[500px] h-[500px] rounded-full bg-tint/8 blur-[120px]" />
+      </div>
+
+      {/* Grain overlay for texture */}
+      <GrainOverlay opacity={0.03} />
+
+      <Container className="relative z-10">
         <AnimatedSection>
           <SectionTitle
             badge="Funciones"
@@ -62,6 +78,7 @@ export function FeaturesTabsSection() {
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
+                className="bg-white/80 backdrop-blur-md rounded-2xl p-6 sm:p-8 border border-white/60 shadow-lg shadow-primary-500/5"
               >
                 <h3 className="font-display font-bold text-2xl sm:text-3xl text-text-primary mb-4">
                   {activeFeature.title}

@@ -35,7 +35,13 @@ export function ScreenshotsSection() {
   const [isDarkMode, setIsDarkMode] = useState(false);
 
   return (
-    <section id="capturas" className="py-20 sm:py-28">
+    <section id="capturas" className="relative py-20 sm:py-28 overflow-hidden">
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] rounded-full bg-primary-100/30 blur-[120px]" />
+        <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full bg-tint/8 blur-[100px]" />
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] rounded-full bg-primary-200/20 blur-[80px]" />
+      </div>
+
       <Container>
         <AnimatedSection>
           <SectionTitle

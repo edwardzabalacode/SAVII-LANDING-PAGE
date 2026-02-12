@@ -12,7 +12,13 @@ import { plans } from "@/data/plans";
 
 export function PremiumPlansSection() {
   return (
-    <section id="planes" className="py-20 sm:py-28">
+    <section id="planes" className="relative py-20 sm:py-28 overflow-hidden">
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute -top-20 left-1/3 w-[600px] h-[600px] rounded-full bg-primary-100/35 blur-[120px]" />
+        <div className="absolute bottom-0 right-0 w-[400px] h-[400px] rounded-full bg-primary-200/20 blur-[100px]" />
+        <div className="absolute top-1/2 -left-20 w-[350px] h-[350px] rounded-full bg-tint/8 blur-[80px]" />
+      </div>
+
       <Container>
         <AnimatedSection>
           <SectionTitle

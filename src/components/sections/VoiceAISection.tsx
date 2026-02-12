@@ -5,6 +5,8 @@ import { Mic, Cpu, CheckCircle } from "lucide-react";
 import { Container } from "@/components/ui/Container";
 import { SectionTitle } from "@/components/ui/SectionTitle";
 import { AnimatedSection } from "@/components/ui/AnimatedSection";
+import { AbstractDarkArt } from "@/components/ui/AbstractDarkArt";
+import { GrainOverlay } from "@/components/ui/GrainOverlay";
 
 const steps = [
   {
@@ -51,8 +53,14 @@ function SoundWave() {
 
 export function VoiceAISection() {
   return (
-    <section className="py-20 sm:py-28 bg-surface-dark text-text-light">
-      <Container>
+    <section className="relative py-20 sm:py-28 bg-surface-dark text-text-light overflow-hidden">
+      {/* Abstract art background */}
+      <AbstractDarkArt />
+
+      {/* Grain texture */}
+      <GrainOverlay opacity={0.04} />
+
+      <Container className="relative z-10">
         <AnimatedSection>
           <SectionTitle
             badge="IA de Voz"
@@ -67,7 +75,7 @@ export function VoiceAISection() {
           delay={0.1}
           className="max-w-2xl mx-auto mb-16"
         >
-          <div className="bg-surface-dark-alt rounded-2xl p-6 sm:p-8 border border-white/10">
+          <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-6 sm:p-8 border border-white/10">
             <div className="flex items-center gap-3 mb-4">
               <div className="w-10 h-10 rounded-full bg-primary-500/20 flex items-center justify-center">
                 <Mic className="h-5 w-5 text-primary-400" />
@@ -80,19 +88,19 @@ export function VoiceAISection() {
 
             {/* Extracted data */}
             <div className="grid grid-cols-3 gap-4">
-              <div className="bg-white/5 rounded-xl p-3 text-center">
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-3 text-center border border-white/5">
                 <div className="text-xs text-gray-400 mb-1">Monto</div>
                 <div className="font-display font-bold text-primary-400">
                   $50,000
                 </div>
               </div>
-              <div className="bg-white/5 rounded-xl p-3 text-center">
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-3 text-center border border-white/5">
                 <div className="text-xs text-gray-400 mb-1">Categoría</div>
                 <div className="font-display font-bold text-primary-400">
                   Mercado
                 </div>
               </div>
-              <div className="bg-white/5 rounded-xl p-3 text-center">
+              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-3 text-center border border-white/5">
                 <div className="text-xs text-gray-400 mb-1">Descripción</div>
                 <div className="font-display font-bold text-primary-400 text-sm">
                   Supermercado
