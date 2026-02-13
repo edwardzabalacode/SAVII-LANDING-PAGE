@@ -69,7 +69,7 @@ export function PremiumPlansSection() {
                 <Button
                   variant={plan.highlighted ? "primary" : "secondary"}
                   className="w-full"
-                  href="#"
+                  href="https://play.google.com/store/apps/details?id=com.saviiapp.savii&hl=es_CO"
                 >
                   {plan.cta}
                 </Button>

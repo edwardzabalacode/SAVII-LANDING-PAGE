@@ -85,7 +85,7 @@ export function MobileDrawer({ isOpen, onClose }: MobileDrawerProps) {
 
               {/* CTA */}
               <div className="mt-auto pt-6 border-t border-border">
-                <Button href="#" className="w-full">
+                <Button href="https://play.google.com/store/apps/details?id=com.saviiapp.savii&hl=es_CO" className="w-full">
                   <Download className="h-4 w-4" />
                   {t("downloadApp")}
                 </Button>
