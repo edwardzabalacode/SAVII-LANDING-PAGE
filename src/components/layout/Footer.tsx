@@ -24,9 +24,9 @@ export async function Footer() {
             <Image
               src="/icon.png"
               alt="Savii"
-              width={140}
-              height={48}
-              className="h-12 w-auto mb-4"
+              width={400}
+              height={400}
+              className="h-28 w-auto -my-8 -ml-6 mb-0"
             />
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
               {t("brandDescription")}

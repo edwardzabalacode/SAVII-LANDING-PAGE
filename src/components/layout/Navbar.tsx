@@ -28,8 +28,8 @@ export function Navbar() {
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div
-            className={`flex items-center justify-between transition-all duration-300 ${
-              isScrolled ? "h-16" : "h-20"
+            className={`flex items-center justify-between transition-all duration-300 h-16 ${
+              isScrolled ? "lg:h-16" : "lg:h-20"
             }`}
           >
             {/* Logo — image is square with padding, so we scale it larger and use negative margins */}
@@ -60,7 +60,7 @@ export function Navbar() {
             {/* Desktop CTA */}
             <div className="hidden lg:flex items-center gap-4">
               <LanguageSelector variant="dark" />
-              <Button size="sm" href="#">
+              <Button size="sm" href="https://play.google.com/store/apps/details?id=com.saviiapp.savii&hl=es_CO">
                 <Download className="h-4 w-4" />
                 {t("download")}
               </Button>

@@ -18,7 +18,7 @@ const storeConfig = {
 };
 
 const GOOGLE_PLAY_URL =
-  "https://play.google.com/store/apps/details?id=com.saviiapp.savii&hl=es_419";
+  "https://play.google.com/store/apps/details?id=com.saviiapp.savii&hl=es_CO";
 
 export function StoreBadge({ store, href = GOOGLE_PLAY_URL }: StoreBadgeProps) {
   const config = storeConfig[store];

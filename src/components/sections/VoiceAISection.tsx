@@ -90,22 +90,22 @@ export function VoiceAISection() {
             </p>
 
             {/* Extracted data */}
-            <div className="grid grid-cols-3 gap-4">
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-3 text-center border border-white/5">
-                <div className="text-xs text-gray-400 mb-1">{t("amount")}</div>
-                <div className="font-display font-bold text-primary-400">
+            <div className="grid grid-cols-3 gap-2 sm:gap-4">
+              <div className="min-w-0 bg-white/5 backdrop-blur-sm rounded-xl p-2 sm:p-3 text-center border border-white/5">
+                <div className="text-[10px] sm:text-xs text-gray-400 mb-1">{t("amount")}</div>
+                <div className="font-display font-bold text-primary-400 text-[10px] sm:text-base leading-tight">
                   {t("amountValue")}
                 </div>
               </div>
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-3 text-center border border-white/5">
-                <div className="text-xs text-gray-400 mb-1">{t("category")}</div>
-                <div className="font-display font-bold text-primary-400">
+              <div className="min-w-0 bg-white/5 backdrop-blur-sm rounded-xl p-2 sm:p-3 text-center border border-white/5">
+                <div className="text-[10px] sm:text-xs text-gray-400 mb-1">{t("category")}</div>
+                <div className="font-display font-bold text-primary-400 text-[10px] sm:text-base leading-tight">
                   {t("categoryValue")}
                 </div>
               </div>
-              <div className="bg-white/5 backdrop-blur-sm rounded-xl p-3 text-center border border-white/5">
-                <div className="text-xs text-gray-400 mb-1">{t("description")}</div>
-                <div className="font-display font-bold text-primary-400 text-sm">
+              <div className="min-w-0 bg-white/5 backdrop-blur-sm rounded-xl p-2 sm:p-3 text-center border border-white/5">
+                <div className="text-[10px] sm:text-xs text-gray-400 mb-1">{t("description")}</div>
+                <div className="font-display font-bold text-primary-400 text-[10px] sm:text-base leading-tight">
                   {t("descriptionValue")}
                 </div>
               </div>
