@@ -1,16 +1,15 @@
 import Image from "next/image";
 
 interface StoreBadgeProps {
-  store: /* "apple" | */ "google";
+  store: "apple" | "google";
   href?: string;
 }
 
 const storeConfig = {
-  // TODO: Descomentar cuando la app esté disponible en iOS
-  // apple: {
-  //   src: "/images/icons/app-store.svg",
-  //   alt: "Descargar en App Store",
-  // },
+  apple: {
+    src: "/images/icons/app-store.svg",
+    alt: "Descargar en App Store",
+  },
   google: {
     src: "/images/icons/play-store.svg",
     alt: "Disponible en Google Play",
@@ -20,7 +19,12 @@ const storeConfig = {
 const GOOGLE_PLAY_URL =
   "https://play.google.com/store/apps/details?id=com.saviiapp.savii&hl=es_CO";
 
-export function StoreBadge({ store, href = GOOGLE_PLAY_URL }: StoreBadgeProps) {
+const APP_STORE_URL = "https://apps.apple.com";
+
+export function StoreBadge({
+  store,
+  href = store === "apple" ? APP_STORE_URL : GOOGLE_PLAY_URL,
+}: StoreBadgeProps) {
   const config = storeConfig[store];
 
   return (
