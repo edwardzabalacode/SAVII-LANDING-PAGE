@@ -57,7 +57,7 @@ export function HeroSection() {
               label={t("phoneLabel")}
               screenContent={
                 <Image
-                  src="/images/screenshots/home.png"
+                  src="/images/screenshots/home.webp"
                   alt={t("phoneLabel")}
                   fill
                   className="object-cover"

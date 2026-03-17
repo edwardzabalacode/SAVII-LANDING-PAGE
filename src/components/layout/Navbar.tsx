@@ -35,7 +35,7 @@ export function Navbar() {
             {/* Logo — image is square with padding, so we scale it larger and use negative margins */}
             <a href="#" className="shrink-0">
               <Image
-                src="/icon.png"
+                src="/icon.webp"
                 alt="Savii"
                 width={400}
                 height={400}

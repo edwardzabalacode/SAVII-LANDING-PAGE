@@ -189,7 +189,7 @@ export function FinalCTASection() {
               label={t("phoneLabel")}
               screenContent={
                 <Image
-                  src="/images/screenshots/splash.png"
+                  src="/images/screenshots/splash.webp"
                   alt={t("phoneLabel")}
                   fill
                   className="object-cover"

@@ -122,7 +122,7 @@ export function SharedListsSection() {
                 gradientTo="to-teal-600"
                 screenContent={
                   <Image
-                    src="/images/screenshots/listacompartida2.png"
+                    src="/images/screenshots/listacompartida2.webp"
                     alt={t("phoneLabel")}
                     fill
                     className="object-cover"

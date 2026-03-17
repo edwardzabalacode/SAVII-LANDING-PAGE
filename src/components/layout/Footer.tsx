@@ -22,7 +22,7 @@ export async function Footer() {
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
             <Image
-              src="/icon.png"
+              src="/icon.webp"
               alt="Savii"
               width={400}
               height={400}

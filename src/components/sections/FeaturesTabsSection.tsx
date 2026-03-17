@@ -261,7 +261,7 @@ export function FeaturesTabsSection() {
                   gradientTo="to-primary-600"
                   screenContent={
                     <Image
-                      src="/images/screenshots/Estadisticas.png"
+                      src="/images/screenshots/Estadisticas.webp"
                       alt={t("phoneLabel")}
                       fill
                       className="object-cover"
@@ -323,7 +323,7 @@ export function FeaturesTabsSection() {
                 gradientTo="to-primary-600"
                 screenContent={
                   <Image
-                    src="/images/screenshots/Estadisticas.png"
+                    src="/images/screenshots/Estadisticas.webp"
                     alt={t("phoneLabel")}
                     fill
                     className="object-cover"
