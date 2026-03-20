@@ -6,7 +6,7 @@ export interface NavLink {
 export interface SocialLink {
   label: string;
   href: string;
-  iconName: "Instagram" | "Twitter" | "Youtube";
+  iconName: "Instagram" | "TikTok";
 }
 
 export const navLinks: NavLink[] = [
@@ -23,6 +23,5 @@ export const footerLinks: NavLink[] = [
 
 export const socialLinks: SocialLink[] = [
   { label: "Instagram", href: "#", iconName: "Instagram" },
-  { label: "Twitter", href: "#", iconName: "Twitter" },
-  { label: "YouTube", href: "#", iconName: "Youtube" },
+  { label: "TikTok", href: "#", iconName: "TikTok" },
 ];

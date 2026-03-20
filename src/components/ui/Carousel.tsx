@@ -17,7 +17,7 @@ export function Carousel({
   const [emblaRef, emblaApi] = useEmblaCarousel({
     loop: false,
     dragFree: true,
-    align: "start",
+    align: "center",
     containScroll: "trimSnaps",
   });
   const [selectedIndex, setSelectedIndex] = useState(0);

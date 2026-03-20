@@ -54,20 +54,21 @@ export function ScreenshotsSection() {
           />
         </AnimatedSection>
 
-        <AnimatedSection delay={0.1} className="flex justify-center mb-10">
+        {/* TODO: Descomentar cuando el modo oscuro esté listo */}
+        {/* <AnimatedSection delay={0.1} className="flex justify-center mb-10">
           <Toggle
             options={[t("lightMode"), t("darkMode")]}
             value={isDarkMode}
             onChange={setIsDarkMode}
           />
-        </AnimatedSection>
+        </AnimatedSection> */}
 
         <AnimatedSection delay={0.2}>
-          <Carousel>
+          <div className="flex flex-wrap justify-center gap-10">
             {screenshots.map((screenshot, index) => (
               <div
                 key={screenshot.id}
-                className="flex-none w-[200px] sm:w-[220px] lg:w-[240px]"
+                className="w-[200px] sm:w-[220px] lg:w-[240px]"
               >
                 <PhoneMockup
                   size="sm"
@@ -95,7 +96,7 @@ export function ScreenshotsSection() {
                 />
               </div>
             ))}
-          </Carousel>
+          </div>
         </AnimatedSection>
       </Container>
     </section>

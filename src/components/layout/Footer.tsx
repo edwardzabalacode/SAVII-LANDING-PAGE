@@ -2,12 +2,28 @@ import Image from "next/image";
 import { getTranslations } from "next-intl/server";
 import { Container } from "@/components/ui/Container";
 import { navLinks, footerLinks, socialLinks } from "@/data/navigation";
-import { Instagram, Twitter, Youtube, type LucideIcon } from "lucide-react";
+import { Instagram, type LucideIcon } from "lucide-react";
 
-const iconMap: Record<string, LucideIcon> = {
+function TikTokIcon({ className }: { className?: string }) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}
+    >
+      <path d="M9 12a4 4 0 1 0 4 4V4a5 5 0 0 0 5 5" />
+    </svg>
+  );
+}
+
+const iconMap: Record<string, LucideIcon | typeof TikTokIcon> = {
   Instagram,
-  Twitter,
-  Youtube,
+  TikTok: TikTokIcon,
 };
 
 export async function Footer() {
@@ -31,6 +47,12 @@ export async function Footer() {
             <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
               {t("brandDescription")}
             </p>
+            <a
+              href="mailto:appsavii@gmail.com"
+              className="mt-3 inline-block text-gray-400 hover:text-white text-sm transition-colors"
+            >
+              appsavii@gmail.com
+            </a>
           </div>
 
           {/* Navigation */}

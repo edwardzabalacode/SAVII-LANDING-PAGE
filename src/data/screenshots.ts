@@ -30,10 +30,4 @@ export const screenshots: Screenshot[] = [
     lightSrc: "/images/screenshots/Estadisticas.webp",
     darkSrc: "/images/screenshots/Estadisticas.webp",
   },
-  {
-    id: "shared-lists",
-    key: "sharedLists",
-    lightSrc: "/images/screenshots/listacompartida2.webp",
-    darkSrc: "/images/screenshots/listacompartida2.webp",
-  },
 ];

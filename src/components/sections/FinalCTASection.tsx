@@ -177,8 +177,7 @@ export function FinalCTASection() {
 
             <div className="mt-8 flex flex-wrap gap-4 justify-center lg:justify-start">
               <StoreBadge store="google" />
-              {/* TODO: Descomentar cuando la app esté disponible en iOS */}
-              {/* <StoreBadge store="apple" /> */}
+              <StoreBadge store="apple" />
             </div>
           </AnimatedSection>
 
